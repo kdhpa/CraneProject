@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Hook : MonoBehaviour
 {
+    [Header("HookValue")]
     [SerializeField]
     private float maxValueX = 0.0035f;
 
@@ -17,17 +18,12 @@ public class Hook : MonoBehaviour
 
     private Vector2 input_move_vec;
 
+    [SerializeField]
     private Transform hookPivot;
-
-    private void Awake()
-    {
-        hookPivot = this.gameObject.transform.Find("HookPivot");
-    }
 
     private void Start()
     {
         EventManager.Instance.AddEventListner<Vec2Args>("Move", SetMoveVec);
-        EventManager.Instance.AddEventListner( "Crane", Interacte );
     }
 
     private void SetMoveVec(object sender, Vec2Args look)
@@ -53,10 +49,5 @@ public class Hook : MonoBehaviour
         float inputY = input_move_vec.y * -1;
         Quaternion targetRotation = Quaternion.Euler(inputY * tiltAngle, 0, -inputX * tiltAngle);
         hookPivot.transform.localRotation = Quaternion.Slerp(hookPivot.transform.localRotation, targetRotation, Time.deltaTime * smoothSpeed);
-    }
-
-    private void Interacte(object sender , EventArgs args )
-    {
-        
     }
 }
