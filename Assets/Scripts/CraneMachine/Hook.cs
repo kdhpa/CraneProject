@@ -45,9 +45,9 @@ public class Hook : MonoBehaviour
             this.transform.localPosition = new Vector3(pos.x, y, pos.z);
         }
 
-        float inputX = input_move_vec.x * -1;
-        float inputY = input_move_vec.y * -1;
-        Quaternion targetRotation = Quaternion.Euler(inputY * tiltAngle, 0, -inputX * tiltAngle);
-        hookPivot.transform.localRotation = Quaternion.Slerp(hookPivot.transform.localRotation, targetRotation, Time.deltaTime * smoothSpeed);
+        // float inputX = input_move_vec.x * -1;
+        // float inputY = input_move_vec.y * -1;
+        // Quaternion targetRotation = Quaternion.Euler(inputY * tiltAngle, 0, -inputX * tiltAngle);
+        // hookPivot.transform.localRotation = Quaternion.Slerp(hookPivot.transform.localRotation, targetRotation, Time.deltaTime * smoothSpeed);
     }
 }
